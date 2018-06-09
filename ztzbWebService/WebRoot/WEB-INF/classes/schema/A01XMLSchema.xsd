@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:element name="A01">
+		<xs:annotation>
+			<xs:documentation>项目数据</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="A010001">
+					<xs:annotation>
+						<xs:documentation>项目编号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="17" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010002">
+					<xs:annotation>
+						<xs:documentation>项目名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="200" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010003">
+					<xs:annotation>
+						<xs:documentation>项目所在行政区域代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="6" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010004">
+					<xs:annotation>
+						<xs:documentation>项目地址</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="200" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010005">
+					<xs:annotation>
+						<xs:documentation>项目法人</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010006">
+					<xs:annotation>
+						<xs:documentation>项目行业分类</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="3" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010007">
+					<xs:annotation>
+						<xs:documentation>资金来源</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="1000" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010008">
+					<xs:annotation>
+						<xs:documentation>项目规模</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="1000" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010009">
+					<xs:annotation>
+						<xs:documentation>联系人</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A010010">
+					<xs:annotation>
+						<xs:documentation>联系方式</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

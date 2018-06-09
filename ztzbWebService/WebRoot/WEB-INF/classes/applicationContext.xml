@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans
+						 http://www.springframework.org/schema/beans/spring-beans.xsd
+						 http://www.springframework.org/schema/context
+						 http://www.springframework.org/schema/context/spring-context-2.5.xsd
+ 						 http://www.springframework.org/schema/tx
+ 						 http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+ 						 http://www.springframework.org/schema/aop
+						 http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+						 http://cxf.apache.org/jaxws
+						 http://cxf.apache.org/schemas/jaxws.xsd">
+ 
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<context:component-scan base-package="ztzb.*" />
+	<context:property-placeholder location="classpath:db.properties"/>
+    
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/> 
+		<property name="username" value="${jdbc.username}"/> 
+		<property name="password" value="${jdbc.password}"/> 
+	</bean> 
+		
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" destroy-method="destroy">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+		    <props>
+ 				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>  
+				<prop key="hibernate.show_sql">false</prop>  
+				<prop key="hibernate.format_sql">false</prop> 
+				<prop key="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>  
+				<prop key="hibernate.c3p0.validate">true</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>  
+				<prop key="hibernate.c3p0.min_size">5</prop>
+				<prop key="hibernate.c3p0.timeout">120</prop>  
+				<prop key="hibernate.c3p0.max_statements">100</prop>  
+				<prop key="hibernate.c3p0.idle_test_period">120</prop>  
+				<prop key="hibernate.c3p0.acquire_increment">2</prop>  
+				<prop key="connection.useUnicode">true</prop> 
+				<prop key="connection.characterEncoding">UTF-8</prop>
+		    </props>
+		</property>
+		<property name="packagesToScan" value="ztzb.com.entity" />
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 配置事务的传播特性，定义事务会传播到那些方法上 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="save*" propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="del*" propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="update*" propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" isolation="READ_COMMITTED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 使用aop 定义事务,expression表示定义的是：事务要使用在那些方法上，相当于定义事务的边界 -->
+	<aop:config>
+		<aop:pointcut id="all"
+			expression="execution(* ztzb.com.service.impl.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="all" />
+	</aop:config>
+	
+	<!-- 定义webservice,implementor指定了webservice具体实现类，address指定了可访问的接口地址 -->
+	<jaxws:endpoint id="ZtzbWebService"
+		implementor="#ztzbWebServiceImpl" 
+		address="/ZtzbWebService" />
+</beans> 

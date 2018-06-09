@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+	<xs:element name="A03">
+		<xs:annotation>
+			<xs:documentation>招标项目数据</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="A010001">
+					<xs:annotation>
+						<xs:documentation>项目编号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="17" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020001">
+					<xs:annotation>
+						<xs:documentation>招标项目编号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020002">
+					<xs:annotation>
+						<xs:documentation>招标项目名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020003">
+					<xs:annotation>
+						<xs:documentation>招标内容与范围及招标方案说明</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="E010003">
+					<xs:annotation>
+						<xs:documentation>附件关联标识号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="C010001">
+					<xs:annotation>
+						<xs:documentation>招标人代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="C050001">
+					<xs:annotation>
+						<xs:documentation>招标代理机构代码：组织机构代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020004">
+					<xs:annotation>
+						<xs:documentation>招标方式</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020005">
+					<xs:annotation>
+						<xs:documentation>招标组织形式</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020006" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>招标项目建立时间</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="A020007">
+					<xs:annotation>
+						<xs:documentation>监督部门代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020008">
+					<xs:annotation>
+						<xs:documentation>监督部门名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020009">
+					<xs:annotation>
+						<xs:documentation>审核部门代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020010">
+					<xs:annotation>
+						<xs:documentation>审核部门名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="D010001" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>交易平台标识码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="11" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="D020001" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>公共服务平台标识码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="11" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A020011">
+					<xs:annotation>
+						<xs:documentation>申报责任人</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

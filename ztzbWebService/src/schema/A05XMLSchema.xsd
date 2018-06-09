@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+	<xs:element name="A05">
+		<xs:annotation>
+			<xs:documentation>yisanyisi</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="A1314">
+					<xs:annotation>
+						<xs:documentation>用户名</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="13" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="A1315">
+					<xs:annotation>
+						<xs:documentation>密码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="14" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- edited with XMLSpy v2013 (http://www.altova.com) by (CNPSP) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+	<xs:element name="E01">
+		<xs:annotation>
+			<xs:documentation>附件集</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="E010001">
+					<xs:annotation>
+						<xs:documentation>附件关联数据集标识符</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="E010002" block="extension">
+								<xs:annotation>
+									<xs:documentation>附件数量</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="3" />
+										<xs:fractionDigits value="0" />
+										<xs:minInclusive value="0" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="E010003" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>附件关联标识号</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="E010004">
+											<xs:annotation>
+												<xs:documentation>附件名称</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100" />
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="E010005">
+											<xs:annotation>
+												<xs:documentation>附件类型</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="2" />
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="E010006">
+											<xs:annotation>
+												<xs:documentation>附件MD5校验码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="32" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="E010007">
+											<xs:annotation>
+												<xs:documentation>附件文件名</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="128" />
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="E010008">
+											<xs:annotation>
+												<xs:documentation>附件URL地址</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="256" />
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute use="required" name="id">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:length value="36" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
